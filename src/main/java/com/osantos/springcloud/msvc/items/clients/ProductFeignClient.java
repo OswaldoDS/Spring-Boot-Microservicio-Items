@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.osantos.springcloud.msvc.items.models.Product;
 
 //Clase para consumir el API REST
-@FeignClient(url = "localhost:8001/api/v1/products", name = "msvc-products") // Se especifica el puerto del proyecto Products
+@FeignClient(name = "msvc-products") // Se especifica el puerto del proyecto Products
 public interface ProductFeignClient {
 
     @GetMapping
