@@ -8,12 +8,14 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.osantos.springcloud.msvc.items.models.Item;
 import com.osantos.springcloud.msvc.items.services.ItemService;
 
 @RestController
+@RequestMapping("/api/v1/products")
 public class ItemController {
 
     //Se inyecta dependencia por constructor
