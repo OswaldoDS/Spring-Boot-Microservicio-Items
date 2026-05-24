@@ -12,6 +12,9 @@ import com.osantos.springcloud.msvc.items.clients.ProductFeignClient;
 import com.osantos.springcloud.msvc.items.models.Item;
 import com.osantos.springcloud.msvc.items.models.Product;
 
+import feign.FeignException;
+import feign.FeignException.FeignClientException;
+
 @Service
 public class ItemServiceFeign implements ItemService {
 
@@ -42,13 +45,15 @@ public class ItemServiceFeign implements ItemService {
 
     @Override
     public Optional<Item> findById(Long id) {
-        Product product = client.details(id);
-        if (product == null) {
+
+        try {
+            Product product = client.details(id);
+            return Optional.of(
+                    new Item(client.details(id), new Random().nextInt(10) + 1));
+
+        } catch (FeignException e) {
             return Optional.empty(); // Regresa un 404
         }
-
-        return Optional.of(
-                new Item(client.details(id), new Random().nextInt(10) + 1));
 
     }
 
