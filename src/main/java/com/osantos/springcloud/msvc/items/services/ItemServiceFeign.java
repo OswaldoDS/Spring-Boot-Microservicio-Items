@@ -48,14 +48,7 @@ public class ItemServiceFeign implements ItemService {
         try {
             Product product = client.details(id);
             return Optional.of(
-                    new Item(client.details(id), new Random().nextInt(10) + 1));
-
-        } catch (FeignException e) {
-
-        try {
-            Product product = client.details(id);
-            return Optional.of(
-                    new Item(client.details(id), new Random().nextInt(10) + 1));
+                    new Item(product, new Random().nextInt(10) + 1));
 
         } catch (FeignException e) {
             return Optional.empty(); // Regresa un 404
