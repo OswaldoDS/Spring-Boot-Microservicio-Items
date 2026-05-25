@@ -21,6 +21,12 @@ public class ItemController {
     //Se inyecta dependencia por constructor
     final private ItemService service;
 
+    /**
+     * Se puede sustituir el @Primary de la clase ItemServiceWebClient
+     * por ItemController(@Qualifier("itemServiceWebClient") ItemService service)
+     * para indicar que es la clase ItemServiceWebClient será la principal
+     * Es otra manera de poder definirlo
+     */ 
     public ItemController(ItemService service) {
         this.service = service;
     }
